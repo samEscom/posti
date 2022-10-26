@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "url": "https://pokeapi.co/api/v2/pokemon/ditto",
+  "params": null,
+  "json": null,
+  "headers": null
+}
