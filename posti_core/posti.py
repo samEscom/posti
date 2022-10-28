@@ -15,17 +15,23 @@ class Posti:
             json_data: Optional[Dict],
             headers: Optional[Dict]
     ) -> Dict:
+        try:
+            response = self._posti_session.request(
+                method=method,
+                url=url,
+                params=params,
+                json=json_data,
+                headers=headers,
+            )
 
-        response = self._posti_session.request(
-            method=method,
-            url=url,
-            params=params,
-            json=json_data,
-            headers=headers,
-        )
-
-        return {
-            "status": response.status_code,
-            "response": response.json(),
-            "text": response.text,
-        }
+            return {
+                "status": response.status_code,
+                "response": response.json(),
+                "text": response.text,
+            }
+        except Exception as e:
+            return {
+                "message": str(e),
+                "status": response.status_code,
+                "text": response.text,
+            }
